@@ -126,6 +126,12 @@ public class PhotosActivity extends Activity {
                         e.printStackTrace();
                     }
 
+                    try {
+                        photo.timestamp = photoJSON.getLong("created_time");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     photos.add(photo);
                 }
                 //Notified the adapter that it should populate new changes into the listView

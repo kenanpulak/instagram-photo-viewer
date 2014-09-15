@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.joda.time.Period;
+
 import java.util.List;
 
 /**
@@ -39,8 +41,8 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         TextView tvUsername = (TextView)convertView.findViewById(R.id.tvUsername);
         TextView tvPlaceName = (TextView)convertView.findViewById(R.id.tvPlaceName);
         ImageView ivUserImage = (ImageView)convertView.findViewById(R.id.ivUserImage);
-
-
+        TextView tvLikesCount = (TextView)convertView.findViewById(R.id.tvLikesCount);
+        TextView tvTime = (TextView) convertView.findViewById(R.id.tvTime);
         //Populate the subviews with the correct data
         tvCaption.setText(photo.caption);
         tvUsername.setText(photo.username);
@@ -50,6 +52,12 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         else{
             tvPlaceName.setText("No Location Available");
         }
+
+
+        tvTime.setText(getStringDifferenceFromDates(photo.timestamp,System.currentTimeMillis()/1000));
+
+        tvLikesCount.setText(String.valueOf(photo.likesCount) + " Likes");
+
         Picasso.with(getContext()).load(photo.userImageURL).into(ivUserImage);
 
         //set image height before loading
@@ -62,4 +70,45 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         return convertView;
     }
 
+    private String getStringDifferenceFromDates(long date1, long date2){
+
+        Period period = new Period(date1, date2);
+
+        int years = period.getYears();
+        int months = period.getMonths();
+        int weeks = period.getWeeks();
+        int days = period.getDays();
+        int hours = period.getHours();
+        int minutes = period.getMinutes();
+        int seconds = period.getSeconds();
+
+        String output = "";
+
+        if (years > 0){
+            output = String.valueOf(years) + " y";
+        }
+        else if(months > 0){
+            output = String.valueOf(months) + " m";
+        }
+        else if(weeks > 0){
+            output = String.valueOf(weeks) + " w";
+        }
+        else if(days > 0){
+            output = String.valueOf(days) + " d";
+        }
+        else if(hours > 0){
+            output = String.valueOf(hours) + " h";
+        }
+        else if(minutes > 0){
+            output = String.valueOf(minutes) + " min";
+        }
+        else if(seconds > 0){
+            output = String.valueOf(seconds) + " s";
+        }
+        else {
+            output = "";
+        }
+
+        return output;
+    }
 }

@@ -7,5 +7,7 @@
     <string name="popular_photos_caption">Popular Photos</string>
     <string name="caption_default_text">This is a default caption</string>
     <string name="no_location_text">No Location Available</string>
+    <string name="likes_default_text">0 Likes</string>
+
 
 </resources>
