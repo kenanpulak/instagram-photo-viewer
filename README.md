@@ -19,4 +19,4 @@ Completed user stories:
 
 Walkthrough of all user stories:
 
-![Video Walkthrough](*.gif)
+![Video Walkthrough](instagram-viewer-demo.gif)
