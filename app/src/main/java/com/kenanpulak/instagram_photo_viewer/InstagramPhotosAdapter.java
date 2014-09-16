@@ -23,6 +23,9 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         super(context, android.R.layout.simple_list_item_1, photos);
     }
 
+    private int mLastPosition = -1;
+
+
     //Takes a data item at a position and converts it into a view in the listview
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
@@ -67,6 +70,22 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         //Ask for the photo to be added to the imageView based on the imageURL
         Picasso.with(getContext()).load(photo.imageURL).into(imgPhoto);
         //Return the view for that data item
+
+        //animate listview items
+        /*
+        TranslateAnimation animation = null;
+        if (position > mLastPosition) {
+            animation = new TranslateAnimation(
+                    Animation.RELATIVE_TO_SELF,
+                    0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
+                    Animation.RELATIVE_TO_SELF, 1.0f,
+                    Animation.RELATIVE_TO_SELF, 0.0f);
+
+            animation.setDuration(600);
+            convertView.startAnimation(animation);
+            mLastPosition = position;
+        }*/
+
         return convertView;
     }
 
