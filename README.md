@@ -17,6 +17,6 @@ Completed user stories:
 * [x] Advanced: pull-to-refresh for popular stream with SwipeRefreshLayout
 * [x] Advanced: Display each photo with the same style and proportions as the real Instagram
 
-Walkthrough of all user stories:
+# Walkthrough of all user stories:
 
 ![Video Walkthrough](instagram-viewer-demo.gif)
